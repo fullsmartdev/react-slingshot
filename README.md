@@ -30,14 +30,10 @@ This will run the automated build process, start up a webserver, and open the ap
 ##Initial Machine Setup
 1. **Install [Node](https://nodejs.org)**.  
 2. **Install [Git](https://git-scm.com/downloads)**.  
- 
-**On Linux:**  
-Run this to [increase the limit](http://stackoverflow.com/questions/16748737/grunt-watch-error-waiting-fatal-error-watch-enospc) on the number of files Linux will watch. [Here's why](https://github.com/coryhouse/react-slingshot/issues/6).    
-`echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p` 
 
-**On Windows:**  
-1. **Install [Python 2.7](https://www.python.org/downloads/)**. Browser-sync (and various other Node modules) rely on node-gyp, which requires Python on Windows.  
-2. **Install C++ Compiler**. [Visual Studio Express](https://www.visualstudio.com/en-US/products/visual-studio-express-vs) comes bundled with a free C++ compiler. Or, if you already have Visual Studio installed: Open Visual Studio and go to File -> New -> Project -> Visual C++ -> Install Visual C++ Tools for Windows Desktop. The C++ compiler is used to compile browser-sync (and perhaps other Node modules).
+On Windows? It requires additional tools:  
+3. **Install [Python 2.7](https://www.python.org/downloads/)**. Browser-sync (and various other Node modules) rely on node-gyp, which requires Python on Windows.  
+4. **Install C++ Compiler**. [Visual Studio Express](https://www.visualstudio.com/en-US/products/visual-studio-express-vs) comes bundled with a free C++ compiler. Or, if you already have Visual Studio installed: Open Visual Studio and go to File -> New -> Project -> Visual C++ -> Install Visual C++ Tools for Windows Desktop. The C++ compiler is used to compile browser-sync (and perhaps other Node modules).
 
 ##FAQ
 ###Why does this exist?
@@ -54,7 +50,7 @@ Unfortunately, scripts in package.json can't be commented inline because the JSO
 | lint | Runs ESLint. |
 | lint:watch | Runs ESLint and watches all files so that they are automatically linted upon save. |
 | clean-dist | Removes everything from the dist folder. |
-| remove-dist | Deletes the dist folder. |
+| remove-dist | Deletes the dist folder |
 | create-dist | Creates the dist folder and the necessary subfolders. |
 | build:html | Adds trackJS tracking script and copies to /dist. |
 | build:sass | Compiles SASS, minifies, generates sourcemap, and stores in /dist. |
@@ -87,8 +83,11 @@ Streamlined automated testing is a core feature of this starter kit. All tests a
 + Easy to create new test files when creating new source files.
 + Short import paths are easy to type and less brittle.
 + As files are moved, it's easy to move tests alongside.
-
++ 
 That said, you can of course place your tests under /test instead, which is the Mocha default. If you do, you can simplify the test script to no longer specify the path. Then Mocha will simply look in /test to find your spec files.
+
+### How do I view code coverage?
+Code coverage is calculated and reported via Istanbul. To view your current code coverage, run `npm run open-coverage`. This will open a tab in your default browser which displays code coverage statistics. You can optionally update the npm script config to run your code coverage on the command line each time you hit save.
 
 ### How do I debug?
 Since browsers don't currently support ES6, we're using Babel to compile our ES6 down to ES5. This means the code that runs in the browser looks different than what we wrote. But good news, a [sourcemap](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/) is generated to enable easy debugging. This means your original JS source will be displayed in your browser's dev console. 
