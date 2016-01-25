@@ -28,7 +28,7 @@ This will run the automated build process, start up a webserver, and open the ap
 6. **Delete the example app files.** Once you're comfortable with how the example app works, you can [delete those files and begin creating your own app](https://github.com/coryhouse/react-slingshot#i-just-want-an-empty-starter-kit).
 
 ##Initial Machine Setup
-1. **Install [Node](https://nodejs.org)**.  
+1. **Install [Node 4.0.0 or greater](https://nodejs.org)**
 2. **Install [Git](https://git-scm.com/downloads)**. 
 3. On a Mac? You're all set. If you're on Linux or Windows, complete the steps for your OS below.  
  
@@ -116,13 +116,17 @@ This starter kit includes an example app so you can see how everything hangs tog
 Don't want to use Redux? See the next question for some steps on removing Redux.
 
 ### Do I have to use Redux?
-Nope. Redux is useful for applications with more complex data flows. If your app is simple, Redux may be overkill. In that case, you can uninstall Redux and delete the following folders:
+Nope. Redux is useful for applications with more complex data flows. If your app is simple, Redux may be overkill. In that case, you can uninstall Redux and delete the following folders (and their contents):
 * actions
 * constants
 * reducers
 * containers
+* store
 
-In main.js, reference your top level component (instead of Redux's root container at ./containers/root).
+Then, update index.js:
+ 1. `npm uninstall redux react-redux`. 
+ 2. Remove the following imports: `import configureStore from './store/configureStore';` and `import { Provider } from 'react-redux';`
+ 3. Create a new top level component and reference it in the render method. 
 
 ### How do I deploy this?
 `npm run build`. This will build the project for production. It does the following:
