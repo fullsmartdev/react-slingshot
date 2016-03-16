@@ -1,9 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 
-const FuelSavingsTextInput = (props) => {
-  const handleChange = (e) => {
+function buildHandleChange(props) {
+  return function handleChange(e) {
     props.onChange(props.name, e.target.value);
   };
+}
+
+const FuelSavingsTextInput = (props) => {
+  const handleChange = buildHandleChange(props);
 
   return (
     <input className="small"
