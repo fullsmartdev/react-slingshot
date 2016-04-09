@@ -4,11 +4,11 @@ import dateHelper from '../businessLogic/dateHelper';
 import objectAssign from 'object-assign';
 
 const initialState = {
-  newMpg: "",
-  tradeMpg: "",
-  newPpg: "",
-  tradePpg: "",
-  milesDriven: "",
+    newMpg: null,
+    tradeMpg: null,
+    newPpg: null,
+    tradePpg: null,
+    milesDriven: null,
     milesDrivenTimeframe: 'week',
     displayResults: false,
     dateModified: null,
