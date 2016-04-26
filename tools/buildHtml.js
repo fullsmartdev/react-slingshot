@@ -21,7 +21,7 @@ fs.readFile('src/index.html', 'utf8', (err, markup) => {
 
   const $ = cheerio.load(markup);
 
-  // since a separate stylesheet is only utilized for the production build, need to dynamically add this here.
+  // since a separate spreadsheet is only utilized for the production build, need to dynamically add this here.
   $('head').prepend('<link rel="stylesheet" href="styles.css">');
 
   if (useTrackJs) {
@@ -30,7 +30,7 @@ fs.readFile('src/index.html', 'utf8', (err, markup) => {
 
       $('head').prepend(trackJsCode); // add TrackJS tracking code to the top of <head>
     } else {
-      console.log('To track JavaScript errors, sign up for a free trial at TrackJS.com and enter your token in /tools/buildHtml.js on line 15.'.yellow);
+      console.log('To track JavaScript errors, sign up for a free trial at TrackJS.com and enter your token in /tools/build.html on line 10.'.yellow);
     }
   }
 
@@ -41,3 +41,4 @@ fs.readFile('src/index.html', 'utf8', (err, markup) => {
     console.log('index.html written to /dist'.green);
   });
 });
+
