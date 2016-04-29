@@ -17,7 +17,7 @@ export default {
   target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
   output: {
     path: __dirname + '/dist', // Note: Physical files are only output by the production build task `npm run build`.
-    publicPath: 'http://localhost:3000/',
+    publicPath: '/',
     filename: 'bundle.js'
   },
   plugins: [
@@ -28,8 +28,7 @@ export default {
   module: {
     loaders: [
       {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
-      {test: /\.(ttf|eot|svg|woff)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loaders: ['file']},
-      {test: /\.(jpe?g|png|gif)$/i, loaders: ['file']},
+      {test: /\.(jpe?g|png|gif|svg)$/i, loaders: ['file']},
       {test: /(\.css|\.scss)$/, loaders: ['style', 'css?sourceMap', 'sass?sourceMap']}
     ]
   }
