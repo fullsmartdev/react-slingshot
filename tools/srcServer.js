@@ -29,18 +29,11 @@ browserSync({
         // Dev middleware can't access config, so we provide publicPath
         publicPath: config.output.publicPath,
 
-        // These settings suppress noisy webpack output so only errors are displayed to the console.
-        noInfo: false,
-        quiet: true,
-        stats: {
-          assets: false,
-          colors: true,
-          version: false,
-          hash: false,
-          timings: false,
-          chunks: false,
-          chunkModules: false
-        },
+        // pretty colored output
+        stats: { colors: true },
+
+        // Set to false to display a list of each file that is being bundled.
+        noInfo: true
 
         // for other settings see
         // http://webpack.github.io/docs/webpack-dev-middleware.html
